@@ -22,6 +22,7 @@
 				   smartparens
 				   exec-path-from-shell
 				   color-theme-sanityinc-tomorrow
+				   popwin
 				 ) "Default packages")
 
 (setq package-selected-packages littleblacktong/packages)
@@ -37,16 +38,14 @@
   (dolist (pkg littleblacktong/packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
-
 ;; theme config
 (load-theme 'sanityinc-tomorrow-eighties t)
-
 ;;smartparens
 (require 'smartparens-config)
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
-
 ;;swiper config
+
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
@@ -57,8 +56,8 @@
 (global-set-key (kbd "<f6>") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
 ;;(global-set-key (kbd "<f1> l") 'counsel-find-library)
 ;;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 ;;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
@@ -69,6 +68,16 @@
 ;;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 ;;(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+(require 'popwin)
+(popwin-mode t)
+
+;;(require 'package)
+;;(package-initialize)
+;;(add-to-list 'package-archives '("melpa" . "http://stabble.melpa.org/packages/"))
 
 ;; off tool bar
 ;; off scroll bar
@@ -100,6 +109,8 @@
 (add-hook 'cider-mode-hook #'company-mode)
 
 (setq make-backup-files nil)
+(setq auto-save-default nil)
+(global-auto-revert-mode t)
 
 ;;add hack init.el keyboard
 (defun open-my-init-file()
@@ -110,11 +121,6 @@
 
 ;;(setq cursor-type 'bar)
 (setq-default cursor-type 'bar)
-
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 (global-company-mode t)
 (custom-set-variables
@@ -136,6 +142,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
 ;;(delete-selection-mode t)
 
 ;;fullscreen
@@ -147,4 +159,5 @@
 
 ;;(require 'hungry-delete-mode)
 (global-hungry-delete-mode)
+
 
