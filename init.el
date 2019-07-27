@@ -16,7 +16,7 @@
 (require 'init-ui)
 (require 'init-better-default)
 (require 'init-keybindings)
-;;(require 'init-clojure)
+(require 'init-clojure)
 
 ;;exec config
 (when (memq window-system '(mac ns))
@@ -29,11 +29,7 @@
 (global-company-mode t)
 ;;(delete-selection-mode t)
 
-;;clojure config
-(add-hook 'clojure-mode-hook #'paredit-mode)
-(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-(add-hook 'cider-repl-mode-hook #'company-mode)
-(add-hook 'cider-mode-hook #'company-mode)
+
 
 
 

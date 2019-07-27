@@ -33,4 +33,10 @@
 ;;(require 'hungry-delete-mode)
 (global-hungry-delete-mode)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;switch window
+
+(require 'switch-window)
+
 (provide 'init-better-default)

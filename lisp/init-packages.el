@@ -16,6 +16,7 @@
 				   exec-path-from-shell
 				   color-theme-sanityinc-tomorrow
 				   popwin
+				   switch-window
 				 ) "Default packages")
 
 (setq package-selected-packages littleblacktong/packages)
