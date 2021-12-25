@@ -1,5 +1,5 @@
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
+(setq package-archives '(("melpa"   . "http://melpa.org/packages/")
+			 ("melpa-stable" . "http://stable.melpa.org/packages/")
 			 ))
 
 (require 'cl) ;;import common lisp
