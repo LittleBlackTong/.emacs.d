@@ -12,22 +12,12 @@
   (find-file "~/.emacs.d/init.el"))
 
 ;;add require
-(require 'init-packages)
-(require 'init-ui)
-(require 'init-better-default)
-(require 'init-keybindings)
-(require 'init-clojure)
+;;(require 'init-packages)
+;;(require 'init-ui)
+;;(require 'init-better-default)
+;;(require 'init-keybindings)
+;;(require 'init-clojure)
 
-;;exec config
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
-;;load custom
-(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
-(load-file custom-file)
-
-(global-company-mode t)
-;;(delete-selection-mode t)
 
 
 
