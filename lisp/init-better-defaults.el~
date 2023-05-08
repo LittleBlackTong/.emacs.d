@@ -1,0 +1,23 @@
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;modeline上显示我的所有的按键和执行的命令
+(package-install 'keycast)
+(keycast-mode t)
+
+;; minibuffer 补全 vertico 和 orderless
+(package-install 'vertico)
+(vertico-mode t)
+
+(package-install 'orderless)
+(setq completion-styles '(orderless))
+
+;; 配置 marginalia 增强minnbuffer annotation
+(package-install 'marginalia)
+(marginalia-mode t)
+
+;; 开启全局自动补全
+(global-company-mode 1)
+
+
+
+(provide 'init-better-defaults)

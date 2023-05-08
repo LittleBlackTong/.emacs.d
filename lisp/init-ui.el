@@ -1,54 +1,34 @@
-(load-theme 'sanityinc-tomorrow-eighties t)
+;; 皮肤主题
+(package-install 'monokai-theme)
+(load-theme 'monokai 1)
 
-;; off tool bar
-;; off scroll bar
-;; off splash screen
-;; global linum mode
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(electric-indent-mode t)
-(setq inhibit-splash-screen t)
-(global-linum-mode 1)
-
-;;(setq cursor-type 'bar)
-(setq-default cursor-type 'bar)
-
-;;fullscreen
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
-
+;; 所在行高亮
 (global-hl-line-mode 1)
 
-;;show time
-(display-time)
-(setq display-time-24hr-format t)
-;;(setq display-time-day-and-date t)
+;; 关闭工具栏
+(tool-bar-mode -1)
+;; 关闭滑动控件
+(scroll-bar-mode -1)
 
-(mouse-avoidance-mode 'animate)
-;;
-;; load file path
-(add-to-list 'load-path "~/.emacs.d/nyan-mode")
-(require 'nyan-mode)
-(setq default-mode-line-format
-      (list ""
-            'mode-line-modified
-            "<"
-            "littleblacktong" ;;your name
-            "> "
-            "%10b"
-            '(:eval (when nyan-mode (list (nyan-create))))
-            " "
-            'default-directory
-            " "
-            "%[("
-            'mode-name
-            'minor-mode-list
-            "%n"
-            'mode-line-process
-            ")%]--"
-            "Line %l--"
-            '(-3 . "%P")
-            "-%-"))
-(nyan-mode t);;start nyan-mode
-(nyan-start-animation);;start dancing
+(electric-indent-mode -1)
+
+(icomplete-mode 1)
+
+(setq inhibit-splash-screen t)
+;- turn off tool-bar
+;- turn off scroll-bar
+;- show linum-mode
+;- turn off splash screen
+;- save your config
+;- define a function to quickly open your config file.N
+;; 开启行号
+(global-linum-mode t)
+
+;; 更改显示字体大小
+(set-face-attribute 'default nil :height 140)
+
+;; 更改光标
+(setq-default cursor-type 'bar)
+(show-paren-mode t)
 
 (provide 'init-ui)

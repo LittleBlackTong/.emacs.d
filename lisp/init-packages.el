@@ -1,36 +1,23 @@
-(setq package-archives '(("melpa"   . "http://melpa.org/packages/")
-			 ("melpa-stable" . "http://stable.melpa.org/packages/")
-			 ))
+(require 'package)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("org-cn". "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(package-initialize)
+;;防止反复调用 package-refresh-contents 会影响加载速度
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-(require 'cl) ;;import common lisp
+(assq-delete-all 'org package--builtins)
+(assq-delete-all 'org package--builtin-versions)
 
-(defvar littleblacktong/packages '(
-				   company
-				   ac-cider
-				   clojure-mode
-				   hungry-delete
-				   cider
-                                   swiper
-				   counsel
-				   smartparens
-				   exec-path-from-shell
-				   color-theme-sanityinc-tomorrow
-				   popwin
-				   switch-window
-				 ) "Default packages")
-
-(setq package-selected-packages littleblacktong/packages)
-
-(defun littleblacktong/packages-installed-p ()
-  (loop for pkg in littleblacktong/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
-
-(unless (littleblacktong/packages-installed-p)
-  (message "%s" "Refreshing package database...")
+;; 添加use package
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (dolist (pkg littleblacktong/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
+  (package-install 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
+
+;; 文件末尾
 (provide 'init-packages)
